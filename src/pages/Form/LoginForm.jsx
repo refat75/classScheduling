@@ -1,6 +1,7 @@
 import {useState} from 'react'
 import userLogin from '../../Auth/userLogin'
 import { useNavigate, useLocation } from 'react-router-dom'
+import './LoginSignup.css'
 
 
 const LoginForm = (props) => {
@@ -31,25 +32,35 @@ const LoginForm = (props) => {
 
     return (
         <>
-            <h1>Login Page</h1>
-            <form onSubmit = {handleLogin}>
-                <input 
-                    type="email" 
-                    placeholder="Email"
-                    value = {email}
-                    onChange={(e)=> setEmail(e.target.value)}
-                />
-                <input 
-                    type="password" 
-                    placeholder="Password"
-                    value= {password}
-                    onChange={(e) => setPassword(e.target.value)}
-                />
+            <div className="container">
+                <div className="header">
+                    <div className="text">Login Page</div>
+                    <div className="underline"></div>
+                </div>
                 {error && <p>{errorMessage}</p>}
-                <button type="submit">Login</button>
-            </form>
-            <p>Have no account?</p>
-            <button onClick={props.toggleForm}>Sign Up</button>
+                <form onSubmit = {handleLogin} className='inputs'>
+                    <input 
+                        className='input'
+                        type="email" 
+                        placeholder="Email"
+                        value = {email}
+                        onChange={(e)=> setEmail(e.target.value)}
+                    />
+                    <input 
+                        className='input'
+                        type="password" 
+                        placeholder="Password"
+                        value= {password}
+                        onChange={(e) => setPassword(e.target.value)}
+                    />
+
+                    <div className="submit-container">
+                        <button type="submit" className='submit'>Login</button>
+                        <p className='no-account'>Have no account?</p>
+                        <button onClick={props.toggleForm} className='submit'>Sign Up</button>
+                    </div>
+                </form>
+            </div>
         </>
     )
 }
