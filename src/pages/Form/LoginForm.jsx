@@ -37,7 +37,7 @@ const LoginForm = (props) => {
                     <div className="text">Login Page</div>
                     <div className="underline"></div>
                 </div>
-                {error && <p>{errorMessage}</p>}
+                {error && <p className='error-message'>{errorMessage}</p>}
                 <form onSubmit = {handleLogin} className='inputs'>
                     <input 
                         className='input'
