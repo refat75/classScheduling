@@ -87,8 +87,9 @@
 }
 
 .error-message{
-    padding-left: 100px;
-    margin-top: 10px;
+    padding-left: 70px;
+    margin-top: 20px;
+    margin-bottom: -5px;
     color: #ec0808;
     font-size: 18px;
 }
