@@ -26,6 +26,7 @@ const LoginForm = (props) => {
             setPassword("");
             return;
         } else {
+            console.log(error);
             setErrorMessage(error);
         }
     };  
