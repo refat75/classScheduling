@@ -14,7 +14,7 @@ const SignupForm = (props) => {
 
     const {error, signUp} = userSignUp();
 
-    const handleSignOut = async(e) =>{
+    const handleSignUp = async(e) =>{
         e.preventDefault();
         console.log(email,password)
         await signUp(email,password);
@@ -36,7 +36,7 @@ const SignupForm = (props) => {
                     <div className="text">SignUp Page</div>
                     <div className="underline"></div>
                 </div>
-                <form className='inputs'>
+                <form className='inputs' onSubmit={handleSignUp}>
                     <input 
                         className='input'
                         type="email" 
