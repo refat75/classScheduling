@@ -6,6 +6,8 @@
     width: 600px;
     background: #fff;
     padding-bottom: 30px;
+    background: rgb(241, 236, 236);
+    border-radius: 5%;
 }
 
 .header{
@@ -82,7 +84,7 @@
 .no-account{
     padding-left: 1px;
     margin-top: 10px;
-    color: #797979;
+    color: rgb(24, 5, 196);
     font-size: 22px;
 }
 
