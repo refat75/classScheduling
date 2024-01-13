@@ -1,14 +1,16 @@
 import React from 'react'
 import { NavLink,Link } from 'react-router-dom'
+import './Usernav.css'
 
 const Usernav = () => {
   return (
-    <nav>
-    <h1>This Is Navbar</h1>
-    <NavLink to="/dashboard">Dashboard</NavLink>
-    <NavLink to="/availability">Availability</NavLink>
-    <NavLink to="/profile">Profile</NavLink> 
-    <button>Logout</button>
+    <nav className='navbar'>
+        <div className="nav-menu">
+            <NavLink to="/dashboard"  className='navlink'>Dashboard</NavLink>
+            <NavLink to="/availability" className='navlink'>Availability</NavLink>
+            <NavLink to="/profile" className='navlink'>Profile</NavLink> 
+        </div>
+        <button className='logout'>Logout</button>
     </nav>
   )
 }
