@@ -2,7 +2,7 @@ import userLogOut from "../Auth/userLogout"
 import { useNavigate } from "react-router-dom"
 import { useState } from "react";
 import { projectAuth } from "../Firebase/config";
-
+import Usernav from "../Navbar/Usernav";
 
 const Dashboard = () => {
   //getting the current user information
@@ -29,10 +29,13 @@ const Dashboard = () => {
   }
 
   return (
-    <div>
-      <h1>Welcome {user}</h1>
-      <button onClick={handleLogOut}>LogOut</button>
-    </div>
+    <>
+      <Usernav />
+      <div>
+        <h1>Welcome {user}</h1>
+        <button onClick={handleLogOut}>LogOut</button>
+      </div>
+    </>
   )
 }
 
