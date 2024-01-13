@@ -45,6 +45,11 @@
     cursor: pointer;
 }
 
+.logout:hover{
+    color: white;
+    background: red;
+}
+
 nav .active{
-    color: green;
+    color: yellow;
 }
