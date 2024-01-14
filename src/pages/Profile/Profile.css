@@ -1,0 +1,36 @@
+.profile-container{
+    display: flex;
+    justify-content: space-around;
+    margin-top: 30px;
+}
+
+.update-information{
+    display: flex;
+    flex-direction: column;
+}
+
+.profile-update{
+    display: flex;
+    flex-direction: column;
+    padding: 40px;
+    background: rgb(221, 219, 219);
+}
+
+.profile-information{
+    display: flex;
+    flex-direction: column;
+    padding: 30px;
+    background: rgb(221, 219, 219);
+}
+
+.profile-information-header{
+    margin-bottom: 15px;
+}
+
+.profile-update-header{
+    margin-bottom: 15px;
+}
+
+.profile-update-save{
+    margin-top: 30px;
+}

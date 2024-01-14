@@ -3,6 +3,8 @@ import Usernav from '../../Navbar/Usernav'
 import getUser from '../../Jsfunction/userauth'
 import checkDocumentExists from '../../Jsfunction/checkdocexist'
 import updateFirestoreDocument from '../../Jsfunction/Firebase/updateFirestoreDoc'
+import './Profile.css'
+
 const Profile = () => {
 
   const [name,setName] = useState("Loading Name...");
@@ -40,31 +42,32 @@ const Profile = () => {
   return (
     <>
       <Usernav />
-      <div>
-        <h1>Profile Information</h1>
-        <h3>User Details are shown below</h3>
-        <p>Name: {name}</p>
-        <p>Short Name: {shortName}</p>
-      </div>
-      <div>
-        <h1>Update Your Information</h1>
-        <form onSubmit={handleUpdate}>
-          <label htmlFor="fullname">Edit Name:</label>
-          <input 
-            type="text" 
-            id="fullname"
-            value={name}
-            onChange={(e)=> setName(e.target.value)}
-          />
-          <label htmlFor="shortname">Edit Shortname:</label>
-          <input 
-            type="text" 
-            id="shortname" 
-            value= {shortName}
-            onChange={(e)=>setshortName(e.target.value)}
-          />
-          <button>Save</button>
-        </form>
+      <div className='profile-container'>
+        <div className='profile-information'>
+            <h1 className='profile-information-header'>Profile Information</h1>
+            <p>Name: {name}</p>
+            <p>Short Name: {shortName}</p>
+        </div>
+        <div className='profile-update'>
+            <h1 className='profile-update-header'>Update Your Information</h1>
+            <form onSubmit={handleUpdate} className='update-information'>
+                <label htmlFor="fullname">Edit Name:</label>
+                <input 
+                    type="text" 
+                    id="fullname"
+                    value={name}
+                    onChange={(e)=> setName(e.target.value)}
+                />
+                <label htmlFor="shortname">Edit Shortname:</label>
+                <input 
+                    type="text" 
+                    id="shortname" 
+                    value= {shortName}
+                    onChange={(e)=>setshortName(e.target.value)}
+                />
+                <button className='profile-update-save'>Save</button>
+            </form>
+        </div>
       </div>
     </>
   )
