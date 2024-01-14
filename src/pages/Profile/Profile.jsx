@@ -1,8 +1,8 @@
 import { useState,useEffect } from 'react'
-import Usernav from '../Navbar/Usernav'
-import getUser from '../Jsfunction/userauth'
-import checkDocumentExists from '../Jsfunction/checkdocexist'
-import updateFirestoreDocument from '../Jsfunction/Firebase/updateFirestoreDoc'
+import Usernav from '../../Navbar/Usernav'
+import getUser from '../../Jsfunction/userauth'
+import checkDocumentExists from '../../Jsfunction/checkdocexist'
+import updateFirestoreDocument from '../../Jsfunction/Firebase/updateFirestoreDoc'
 const Profile = () => {
 
   const [name,setName] = useState("Loading Name...");
@@ -41,7 +41,7 @@ const Profile = () => {
     <>
       <Usernav />
       <div>
-        <h1>This is Profile Page</h1>
+        <h1>Profile Information</h1>
         <h3>User Details are shown below</h3>
         <p>Name: {name}</p>
         <p>Short Name: {shortName}</p>

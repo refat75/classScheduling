@@ -17,7 +17,6 @@ const Usernav = () => {
         const userUid = await getUser();
 
         const data = await checkDocumentExists("users",userUid);
-        console.log("Navbar:", data.name)
         setName(data.name);
         setshortName(data.shortname);
       } catch (error) {
@@ -44,7 +43,7 @@ const Usernav = () => {
             <NavLink to="/availability" className='navlink'>Availability</NavLink>
             <NavLink to="/profile" className='navlink'>Profile</NavLink> 
         </div>
-        <p>{name} ({shortName})</p>
+        <p className="shortname">{name} ({shortName})</p>
         <button className='logout' onClick={handleLogOut}>Logout</button>
         
     </nav>

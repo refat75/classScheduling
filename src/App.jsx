@@ -6,8 +6,7 @@ import Error from "./pages/Error.jsx"
 import Dashboard from "./pages/Dashboard.jsx"
 import PrivateRoute from './Layout/PrivateRoute.jsx';
 import Availability from './pages/Availability.jsx';
-import Profile from './pages/Profile.jsx';
-
+import Profile from './pages/Profile/Profile.jsx';
 
 function App() {
 
