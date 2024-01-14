@@ -1,13 +1,17 @@
-import userLogOut from "../Auth/userLogout"
-import { useNavigate } from "react-router-dom"
+
 import { useState } from "react";
-import { projectAuth } from "../Firebase/config";
 import Usernav from "../Navbar/Usernav";
+
+//firebase import
+import {getAuth, onAuthStateChanged} from "firebase/auth"
+import app from "../Firebase/config";
 
 const Dashboard = () => {
   //getting the current user information
+  const auth = getAuth(app);
+
   const [user, setuser] = useState("");
-  projectAuth.onAuthStateChanged((user) =>{
+  onAuthStateChanged(auth,(user) =>{
     if(user){
       console.log("user logged in");
       const emailid = user.email;
@@ -19,21 +23,13 @@ const Dashboard = () => {
 
   })
 
-  const navigate = useNavigate();
-  const {error, logOut} = userLogOut();
-  const handleLogOut = async() =>{
-    await logOut();
-    if(!error){
-      navigate("/")
-    }
-  }
+  
 
   return (
     <>
       <Usernav />
       <div>
         <h1>Welcome {user}</h1>
-        <button onClick={handleLogOut}>LogOut</button>
       </div>
     </>
   )

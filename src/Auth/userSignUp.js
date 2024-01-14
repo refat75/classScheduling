@@ -1,13 +1,16 @@
-import {projectAuth} from "../Firebase/config"
-
+import setUserInfo from "../Jsfunction/setUserInfo";
+import {getAuth, createUserWithEmailAndPassword} from "firebase/auth"
+import app from "../Firebase/config";
 let error = null;
 
 const signUp = async (email, password) => {
     error = null;
-    console.log(email,password);
+    
+    const auth = getAuth(app);
+
     try {
-        const res = await projectAuth.createUserWithEmailAndPassword(
-            email,password
+        const res = await createUserWithEmailAndPassword(
+           auth,email,password
         );
 
         if(!res){
@@ -15,6 +18,15 @@ const signUp = async (email, password) => {
         }
     } catch (err) {
         error = err.message;
+    }
+
+    try {
+        const user = auth.currentUser;
+
+        await setUserInfo(user.uid,"Set Name","Short Name","faculty")
+    } catch (error) {
+        // throw error;
+        console.log("userSignup.js:error Updating Information");
     }
 };
 

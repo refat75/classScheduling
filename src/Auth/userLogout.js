@@ -1,12 +1,14 @@
-import {projectAuth} from "../Firebase/config"
+import {getAuth, signOut} from "firebase/auth"
+import app from "../Firebase/config";
 
 let error = null;
 
 const logOut = async() => {
     error = null;
+    const auth = getAuth(app);
 
     try{
-        await projectAuth.signOut()
+        await signOut(auth)
 
     } catch(err){
         error = err.message;
