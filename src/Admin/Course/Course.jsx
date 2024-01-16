@@ -85,81 +85,81 @@ const Course = () => {
       <AdNav />
 
       {/* Add Course */}
-      <div>
-        <h2>Add New Course</h2>
-        <form onSubmit={handleSubmit}>
-          <label htmlFor="courseCode">Course Code </label>
-          <input 
-            type="text"
-            id = "courseCode"
-            value={coursecode}
-            onChange={(e) => setCourseCode(e.target.value)} 
-          />
-          
-          <label htmlFor="courseName">Course Name </label>
-          <input 
-            type="text" 
-            id="courseName"
-            value={coursename}
-            onChange={(e) => setCoursename(e.target.value)}
-          />
+      <div className="course-container">
+            <form onSubmit={handleSubmit} className="course-add">
+            <h2 className="course-header">Add New Course</h2>
+            <label htmlFor="courseCode">Course Code </label>
+            <input 
+                type="text"
+                id = "courseCode"
+                value={coursecode}
+                onChange={(e) => setCourseCode(e.target.value)} 
+            />
+            
+            <label htmlFor="courseName">Course Name </label>
+            <input 
+                type="text" 
+                id="courseName"
+                value={coursename}
+                onChange={(e) => setCoursename(e.target.value)}
+            />
+            
+            <label htmlFor="session">Session </label>
+            <input 
+                type="text" 
+                id = "session"
+                value = {session}
+                onChange={(e) => setSession(e.target.value)}
+            />
+
+            <label htmlFor="selectUser">Add Teacher: </label>
+            <select
+            id="selectUser"
+            onChange={(e) => {
+                setFacultyuid(e.target.value);
+                setFacultyname(user[e.target.value].name);
+            }} 
+            >
+                <option value="">Select</option>
+                {Object.keys(user).map((uid) =>(
+                    <option key={uid} value={uid}>
+                    {user[uid].name}
+                    </option>
+                ))}
+            </select>
+            <button className="course-add-btn">Save</button>
+            </form>
+        </div>
         
-          <label htmlFor="session">Session </label>
-          <input 
-            type="text" 
-            id = "session"
-            value = {session}
-            onChange={(e) => setSession(e.target.value)}
-          />
+        {/* Show Current Course */}
+        <div className="show-cource">
+            <table>
+                <thead>
+                    <tr>
+                    <th>Course Code</th>
+                    <th>Course Name</th>
+                    <th>Session</th>
+                    <th>Course Teacher</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {Object.keys(allcourse).map((id) =>(
+                    
+                    <tr key = {id}>
+                        <td>{allcourse[id].coursecode}</td>
+                        <td>{allcourse[id].coursename}</td>
+                        <td>{allcourse[id].session}</td>
+                        <td>{allcourse[id].facultyname}</td>
+                        <td>
+                        <button onClick={()=> handleDelete(id)}>Delete</button>
+                        </td>
+                    </tr>
 
-          <label htmlFor="selectUser">Add Teacher: </label>
-          <select
-           id="selectUser"
-           onChange={(e) => {
-              setFacultyuid(e.target.value);
-              setFacultyname(user[e.target.value].name);
-           }} 
-          >
-              <option value="">Select</option>
-              {Object.keys(user).map((uid) =>(
-                <option key={uid} value={uid}>
-                  {user[uid].name}
-                </option>
-              ))}
-          </select>
-          <button>Save</button>
-        </form>
+                    ))}
+                </tbody>
+            </table>
+        </div>
       </div>
-      
-      {/* Show Current Course */}
-      <div>
-        <table>
-          <thead>
-            <tr>
-              <th>Course Code</th>
-              <th>Course Name</th>
-              <th>Session</th>
-              <th>Course Teacher</th>
-            </tr>
-          </thead>
-          <tbody>
-            {Object.keys(allcourse).map((id) =>(
-              
-              <tr key = {id}>
-                <td>{allcourse[id].coursecode}</td>
-                <td>{allcourse[id].coursename}</td>
-                <td>{allcourse[id].session}</td>
-                <td>{allcourse[id].facultyname}</td>
-                <td>
-                  <button onClick={()=> handleDelete(id)}>Delete</button>
-                </td>
-              </tr>
-
-            ))}
-          </tbody>
-        </table>
-      </div>
-    </div>
   )
 }
 
