@@ -3,6 +3,8 @@ import { addData } from "../../Jsfunction/Firebase/addData"
 import { deleteData } from "../../Jsfunction/Firebase/deleteData"
 import { allUsersData,ongoingCourse } from "../../Jsfunction/Firebase/fetchData" 
 import { useEffect, useState } from "react"
+import './Course.css'
+
 const Course = () => {
   const [facultyuid, setFacultyuid] = useState("");
   const [facultyname,setFacultyname] = useState("");

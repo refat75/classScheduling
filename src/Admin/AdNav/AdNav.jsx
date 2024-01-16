@@ -1,16 +1,17 @@
 import { NavLink } from "react-router-dom";
+import './AdNav.css'
 
 const AdNav = () => {
   return (
-    <div>
-       <NavLink to="/admindashboard">Dashboard</NavLink>
+    <nav className="Ad-navbar">
+       <NavLink to="/admindashboard" className='Ad-nav-menu'>Dashboard</NavLink>
        <br />
-       <NavLink to = "/profile">Profile</NavLink>
+       <NavLink to = "/profile" className='Ad-nav-menu'>Profile</NavLink>
        <br />
-       <NavLink to="/course">Course</NavLink>
+       <NavLink to="/course" className='Ad-nav-menu'>Course</NavLink>
        <br />
-       <NavLink to="/classroom">Class Room</NavLink>
-    </div>
+       <NavLink to="/classroom" className='Ad-nav-menu'>Class Room</NavLink>
+    </nav>
   )
 }
 
