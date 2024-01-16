@@ -1,11 +1,15 @@
+
 import { useState,useEffect } from "react"
 import { useNavigate } from "react-router-dom"
 import { NavLink} from 'react-router-dom'
-import './Usernav.css'
 
+import './Usernav.css'
 import userLogOut from "../Auth/userLogout"
 import getUser from "../Jsfunction/userauth"
-import checkDocumentExists from "../Jsfunction/checkdocexist"
+
+// Import Data from fetchData.js
+import { getUserData } from "../../src/Jsfunction/Firebase/fetchData"
+
 const Usernav = () => {
 
   const [name,setName] = useState("Loading...");
@@ -16,7 +20,7 @@ const Usernav = () => {
       try {
         const userUid = await getUser();
 
-        const data = await checkDocumentExists("users",userUid);
+        const data = await getUserData("users",userUid);
         setName(data.name);
         setshortName(data.shortname);
       } catch (error) {

@@ -1,10 +1,11 @@
 import { useState,useEffect } from 'react'
 import Usernav from '../../Navbar/Usernav'
 import getUser from '../../Jsfunction/userauth'
-import checkDocumentExists from '../../Jsfunction/checkdocexist'
 import updateFirestoreDocument from '../../Jsfunction/Firebase/updateFirestoreDoc'
 import './Profile.css'
 
+//Import Data From fetchData.js
+import {getUserData} from "../../Jsfunction/Firebase/fetchData"
 const Profile = () => {
 
   const [name,setName] = useState("Loading Name...");
@@ -15,7 +16,7 @@ const Profile = () => {
       try {
         const userUid = await getUser();
         setUid(userUid);
-        const data = await checkDocumentExists("users",userUid);
+        const data = await getUserData("users",userUid);
 
         setName(data.name);
         setshortName(data.shortname);
@@ -36,7 +37,13 @@ const Profile = () => {
       name: name,
       shortname: shortName,
     };
-    updateFirestoreDocument("users",uid,dataToUpdate);
+    try {
+      updateFirestoreDocument("users",uid,dataToUpdate);
+      alert("data Updated Successfully")  
+    } catch (error) {
+      alert("Data Update Failed");
+    }
+    
   };
   
   return (

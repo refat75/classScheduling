@@ -5,12 +5,12 @@ const db = getFirestore(app);
 
 const updateFirestoreDocument = async (path,documentId,dataToUpdate) =>{
     const docRef = doc(db,path,documentId);
-    console.log(path,documentId,dataToUpdate);
+
     try{
         await updateDoc(docRef,dataToUpdate);
-        console.log("UpdateFireStore: Data Updated Successfully");
+        // console.log("UpdateFireStore: Data Updated Successfully");
     } catch(error){
-        console.log("UpdateFireStore: Update Unsuccessfull")
+        // console.log("UpdateFireStore: Update Unsuccessfull")
     }
 };
 

@@ -5,7 +5,10 @@ const Home = () => {
       This Is Home Page <br />
       Go to Dashboard <br />
       <Link to="/dashboard">
-        <button>Dashboard</button>
+        <button>User Dashboard</button>
+      </Link>
+      <Link to = "/admindashboard">
+        <button>Admin Dashboard</button>
       </Link>
     </div>
   )

@@ -22,8 +22,14 @@ const signUp = async (email, password) => {
 
     try {
         const user = auth.currentUser;
-
-        await setUserInfo(user.uid,"Set Name","Short Name","faculty")
+        const data = {
+            name: "Set Name",
+            shortName: "shortName",
+            role: "faculty",
+            status: "available",
+            email: email
+        }
+        await setUserInfo(user.uid,"Set Name","Short Name","faculty",data)
     } catch (error) {
         // throw error;
         console.log("userSignup.js:error Updating Information");
