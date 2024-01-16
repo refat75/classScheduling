@@ -132,7 +132,7 @@ const Course = () => {
         </div>
         
         {/* Show Current Course */}
-        <div className="show-cource">
+        <div className="show-course">
             <table>
                 <thead>
                     <tr>
