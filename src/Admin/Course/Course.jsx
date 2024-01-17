@@ -1,8 +1,9 @@
+import {v4 as uuidv4} from "uuid"
+import { useEffect, useState } from "react"
 import AdNav from "../AdNav/AdNav"
 import { addData } from "../../Jsfunction/Firebase/addData"
 import { deleteData } from "../../Jsfunction/Firebase/deleteData"
 import { allUsersData,ongoingCourse } from "../../Jsfunction/Firebase/fetchData" 
-import { useEffect, useState } from "react"
 import './Course.css'
 
 const Course = () => {
@@ -30,9 +31,15 @@ const Course = () => {
     fetchData();
   },[]);
 
-  // const addNewItem = (dataToSet) =>{
-  //   setAllcourse((prevCourses) => [...prevCourses,dataToSet]);
-  // }
+  const addNewItem = (dataToSet) =>{
+    setAllcourse((prevCourses) =>{
+      // const newCourse = prevCourses;
+      // console.log("prev: ",newCourse);
+      // newCourse.push(dataToSet);
+      // console.log("Current Course: ",newCourse);
+      return [...prevCourses,dataToSet]
+    })
+  }
 
 
   const handleSubmit = async (e) =>{
@@ -46,12 +53,13 @@ const Course = () => {
       coursename: coursename,
       session: session,
       facultyname: facultyname,
-      facultyuid: facultyuid
+      facultyuid: facultyuid,
+      dbid: uuidv4()
     };
 
     // console.log(dataToSet);
-    addData("courses",dataToSet);
-    // addNewItem(dataToSet);
+    addData("courses",dataToSet)
+    
   }
 
   //Render Table Part Begin From here
@@ -60,13 +68,14 @@ const Course = () => {
     const fetchData = async()=> {
       try {
           const currentCourse = await ongoingCourse();
+          // console.log(currentCourse)
           setAllcourse(currentCourse);
       } catch (error) {
         console.log("Course.jsx:", error);
       }
     }
     fetchData();
-  }, []); 
+  },[]); 
 
   const handleDelete = async(id) => {
     try {
