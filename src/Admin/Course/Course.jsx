@@ -12,6 +12,8 @@ const Course = () => {
   const [coursecode,setCourseCode] = useState("");
   const [coursename,setCoursename] = useState("");
   const [session,setSession] = useState("");
+  const [coursecredit,setCoursecredit] = useState("");
+  const [coursetype,setCoursetype] = useState("");
 
   //Current User List
   const [user,setUser] = useState([]);
@@ -51,6 +53,8 @@ const Course = () => {
     const dataToSet = {
       coursecode: coursecode,
       coursename: coursename,
+      coursetype: coursetype,
+      coursecredit: coursecredit,
       session: session,
       facultyname: facultyname,
       facultyuid: facultyuid,
@@ -116,6 +120,30 @@ const Course = () => {
                 value={coursename}
                 onChange={(e) => setCoursename(e.target.value)}
             />
+
+            <label htmlFor="selecttype">Course Type</label> 
+            <select  
+                id="selecttype"
+                className = "course-input"
+                onChange={(e) => {setCoursetype(e.target.value)}}
+            >
+                <option value="">Select</option>
+                <option value="Theory">Theory</option>
+                <option value="Lab">Lab</option>
+            </select>
+
+
+            <label htmlFor="coursecredit">Course Credit</label>
+            <input 
+              className="course-input"
+              type="text" 
+              placeholder="Course Credit"
+              id = "coursecredit"
+              value={coursecredit}
+              onChange={(e) => setCoursecredit(e.target.value)}
+            />
+
+
             
             <label htmlFor="session">Session </label>
             <input 
@@ -152,8 +180,11 @@ const Course = () => {
                         <tr>
                         <th>Course Code</th>
                         <th>Course Name</th>
+                        <th>Course Type</th>
+                        <th>Course Credit</th>
                         <th>Session</th>
                         <th>Course Teacher</th>
+                        <th>Action  </th>
                         </tr>
                     </thead>
                     <tbody>
@@ -162,6 +193,8 @@ const Course = () => {
                         <tr key = {id}>
                             <td>{allcourse[id].coursecode}</td>
                             <td>{allcourse[id].coursename}</td>
+                            <td>{allcourse[id].coursetype}</td>
+                            <td>{allcourse[id].coursecredit}</td>
                             <td>{allcourse[id].session}</td>
                             <td>{allcourse[id].facultyname}</td>
                             <td>

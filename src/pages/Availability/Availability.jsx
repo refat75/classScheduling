@@ -14,7 +14,7 @@ const Availability = () => {
   const [available,setAvailable] = useState(dummy);
 
   const daysOfWeek = ['Saturday','Sunday','Monday','Tuesday','Wednesday'];
-  const timeSlots = ['9:00-9:50','9:50-10:40','10:40-11:30','11:30-12:20','12:20-1:55','1:55-3:30'];
+  const timeSlots = ['9:00AM-9:50AM','9:50AM-10:40AM','10:40AM-11:30AM','11:30AM-12:20PM','12:20PM-1:55PM','1:55PM-3:30PM'];
 
 
   const onCellClick = (dayIndex,timeIndex) =>{
