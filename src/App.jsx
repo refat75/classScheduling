@@ -15,7 +15,7 @@ import Authentication from "./pages/Authentication.jsx"
 import Error from "./pages/Error.jsx"
 import Dashboard from "./pages/Dashboard.jsx"
 import PrivateRoute from './Layout/PrivateRoute.jsx';
-import Availability from './pages/Availability.jsx';
+import Availability from './pages/Availability/Availability.jsx';
 import Profile from './pages/Profile/Profile.jsx';
 
 //Admin Pages from ./Admin
