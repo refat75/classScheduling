@@ -4,7 +4,7 @@ import './AdNav.css'
 const AdNav = () => {
   return (
     <nav className="Ad-navbar">
-       <NavLink to="/admindashboard" className='Ad-nav-menu'>Dashboard</NavLink>
+       <NavLink to="/dashboard" className='Ad-nav-menu'>Dashboard</NavLink>
        <br />
        <NavLink to = "/profile" className='Ad-nav-menu'>Profile</NavLink>
        <br />

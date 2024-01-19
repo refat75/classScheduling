@@ -48,7 +48,6 @@ const Profile = () => {
   
   return (
     <>
-      <Usernav />
       <div className='profile-container'>
         <div className='profile-information'>
             <h1 className='profile-information-header'>Profile Information</h1>

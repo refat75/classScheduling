@@ -91,7 +91,6 @@ const Course = () => {
 
   return (
     <div>
-      <AdNav />
 
       {/* Add Course */}
       <div className="course-container">
