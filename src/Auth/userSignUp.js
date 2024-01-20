@@ -40,7 +40,7 @@ const signUp = async (email, password) => {
             email: email,
             available: dummy
         }
-        await setUserInfo(user.uid,"Set Name","Short Name","faculty",data)
+        await setUserInfo(user.uid,data)
     } catch (error) {
         // throw error;
         console.log("userSignup.js:error Updating Information");

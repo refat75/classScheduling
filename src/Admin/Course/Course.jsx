@@ -1,6 +1,5 @@
 import {v4 as uuidv4} from "uuid"
 import { useEffect, useState } from "react"
-import AdNav from "../AdNav/AdNav"
 import { addData } from "../../Jsfunction/Firebase/addData"
 import { deleteData } from "../../Jsfunction/Firebase/deleteData"
 import { allUsersData,ongoingCourse } from "../../Jsfunction/Firebase/fetchData" 

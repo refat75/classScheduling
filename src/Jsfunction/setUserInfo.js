@@ -8,12 +8,11 @@ import app from "../Firebase/config";
 
 const db = getFirestore(app);
 
-const setUserInfo = async (uid,username,shortname,role,curData) => {
+const setUserInfo = async (uid,curData) => {
     const  userRef = doc(db,'users', uid);
-    // console.log(uid,username,shortname,role);
+   
     const flattenedAvailable = curData.available.map(row => ({ values: row }));
 
-    // console.log(flattenedAvailable);
     try {
         await setDoc(userRef, {
             name: curData.name,

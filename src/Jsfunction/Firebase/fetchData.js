@@ -73,3 +73,21 @@ export const ongoingCourse = async () => {
 
     return courseArray;
 }
+
+//Get all the  Room Information
+const roomsArray = [];
+let cacheRoomInformation = null;
+export const availableRoom = async () => {
+    if(!cacheRoomInformation){
+        const docRef = collection(db,"room");
+
+        const querySnapshot = await getDocs(docRef);
+        querySnapshot.forEach((doc) => {
+            roomsArray[doc.id] = doc.data();
+        });
+        // console.log(roomsArray);
+        cacheRoomInformation = true;
+    }
+
+    return roomsArray;
+}
