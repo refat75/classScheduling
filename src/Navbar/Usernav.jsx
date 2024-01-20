@@ -32,12 +32,13 @@ const Usernav = () => {
     fetchData();
   },[]);
   //Logout Part
-  const navigate = useNavigate();
+  // const navigate = useNavigate();
   const {error, logOut} = userLogOut();
   const handleLogOut = async() =>{
     await logOut();
     if(!error){
-      navigate("/")
+      location.reload();
+      // navigate("/")
     }
   }
   return (

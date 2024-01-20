@@ -1,5 +1,6 @@
 import { useEffect,useState } from 'react'
-import Usernav from '../../Navbar/Usernav'
+import getUser from '../../Jsfunction/userauth';
+import { getUserData } from '../../Jsfunction/Firebase/fetchData';
 
 const Availability = () => {
   const dummy = [];
@@ -16,17 +17,55 @@ const Availability = () => {
   const daysOfWeek = ['Saturday','Sunday','Monday','Tuesday','Wednesday'];
   const timeSlots = ['9:00AM-9:50AM','9:50AM-10:40AM','10:40AM-11:30AM','11:30AM-12:20PM','12:20PM-1:55PM','1:55PM-3:30PM'];
 
+  useEffect(()=>{
+    const fetchData = async () =>{
+      try {
+        const userUid = await getUser();
+
+        const data = await getUserData("users",userUid);
+
+        const newDummy = [];
+
+        for(let i = 0; i < 6; i++){
+          const row = [];
+          const temp = data.available[i].values;
+          for(let j = 0; j < 7; j++){ 
+            // console.log(i,j,temp[j]);
+            row.push(temp[j]);
+          }
+          // console.log(i,data.available[i].values);
+          // console.log(i,row)
+          newDummy.push(row);
+        }
+
+        console.log(newDummy);
+        setAvailable(newDummy);
+        console.log(data.email)
+        
+      } catch (error) {
+        console.log(error.message);
+      }
+     
+    };
+    
+    fetchData();
+  },[]);
 
   const onCellClick = (dayIndex,timeIndex) =>{
     const newGrid = [...available];
     newGrid[dayIndex][timeIndex] = 1 - newGrid[dayIndex][timeIndex];
     setAvailable(newGrid);
   }
+
+  const onSaveClick = () =>{
+    console.log("saveClick: ", available);
+    const 
+
+  }
   // console.log(available[0][1]);
   
   return (
     <>
-    <Usernav/>
       <div>
             
           <div style={{ marginLeft: '10%', marginRight: '10%' }}>
@@ -70,6 +109,7 @@ const Availability = () => {
                   ))}
                 </tbody>
               </table>
+              <button onClick={onSaveClick}>Save</button>
           </div>
       </div>
     </>

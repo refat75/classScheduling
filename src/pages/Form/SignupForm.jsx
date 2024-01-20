@@ -1,16 +1,16 @@
 import {useState} from 'react'
 import userSignUp from '../../Auth/userSignUp'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { Navigate } from 'react-router-dom'
 
 const SignupForm = (props) => {
     const [email, setEmail] = useState("")
     const [password, setPassword] = useState("")
     const [errorMessage, setErrorMessage] = useState(null)
 
-    const navigate = useNavigate();
-    const location = useLocation();
+    // const navigate = useNavigate();
+    // const location = useLocation();
 
-    const from = location.state?.from?.pathname || "/dashboard"
+    // const from = location.state?.from?.pathname || "/dashboard"
 
     const {error, signUp} = userSignUp();
 
@@ -19,7 +19,8 @@ const SignupForm = (props) => {
         console.log(email,password)
         await signUp(email,password);
         if(!error){
-            navigate(from, {replace: true})
+            // navigate(from, {replace: true})
+            <Navigate to="/dashboard"/>
             setEmail("")
             setPassword("")
             return;
@@ -36,6 +37,7 @@ const SignupForm = (props) => {
                     <div className="text">SignUp Page</div>
                     <div className="underline"></div>
                 </div>
+                {error && <p className='error-message'>{errorMessage}</p>}
                 <form className='inputs' onSubmit={handleSignUp}>
                     <input 
                         className='input'

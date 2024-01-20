@@ -27,7 +27,7 @@ import { Component, useEffect,useState } from 'react';
 import { getUserData } from './Jsfunction/Firebase/fetchData.js';
 
 function App() {
-  const [isloading, setIsloading] = useState(false);
+  const [isloading, setIsloading] = useState(true);
   const [user, setUser] = useState(null);
   const [isadmin, setIsadmin] = useState(null);
 
@@ -41,16 +41,18 @@ function App() {
         // console.log(authUser.uid);
         try {
           const data = await getUserData("users",authUser.uid);
-          console.log(data);
+          // console.log(data);
           if(data.role === "admin") setIsadmin(true);
           console.log(isadmin);
           setUser(authUser);
-          setIsloading(true)
+          setIsloading(false)
         } catch (error) {
+          setIsloading(false)
           console.log("App.js: error when getting User Data")
         }
 
       } else {
+        setIsloading(false);
         console.log("user not logged in");
       }
     });
@@ -60,50 +62,42 @@ function App() {
 
   return (
     <Router>
+    
       {user? (
         isadmin? (
           //Admin Routing
           <>
             <AdNav/>
             <Routes>
+              <Route path="/login" element = {<Navigate to ="/dashboard"/>} />
+              <Route path="/" element = {<Navigate to ="/dashboard"/>} />
               <Route path="/dashboard" element={<Addashboard/>}/>
               <Route path="/profile" element={<Profile/>}/>
               <Route path="/course" element={<Course/>}/>
+              <Route path="/classroom" element={<Room/>} />
+              <Route path="/availability" element={<Availability/>}/>
             </Routes>
           </>
         ):(
           <>
-          <Usernav/>
-          <h1>User</h1>
+            <Usernav/>
+            <Routes>
+              <Route path="/login" element = {<Navigate to ="/dashboard"/>} />
+              <Route path="/" element={<Dashboard/>} />
+              <Route path="/dashboard" element={<Dashboard/>}/>
+              <Route path="/profile" element={<Profile/>}/>
+              <Route path="/availability" element={<Availability/>}/>
+            </Routes>
           </>
         )
       ):(
+        isloading? <h1>Loading...</h1> :(
         <Routes>
-          <Route path="/login" element={<Authentication/>}/>
           <Route path="*" element = {<Navigate to ="/login"/>} />
+          <Route path="/login" element={<Authentication/>}/>
         </Routes>
-      )}
+      ))}
     </Router>
-  //  <Routes>
-  //     {/* {Public Page} */}
-  //     <Route path="/" element = {<Home/>}></Route>
-  //     <Route path="/authentication" element={<Authentication/>}></Route>
-  //     <Route path="*" element = {<Error/>}></Route>
-  //     <Route path="/availability" element={<Availability/>}></Route>
-  //     <Route path="/profile" element={<Profile/>}></Route>
-
-  //     {/* Admin Part */}
-  //     <Route path ="/classroom" element = {<Room />}></Route>
-  //     <Route path="/admindashboard" element = {<Addashboard />} ></Route>
-  //     <Route path="/course" element = {<Course />}></Route>
-
-
-  //     {/* private pages */}
-  //     <Route element = {<PrivateRoute/>}>
-  //          <Route path="/dashboard" element = {<Dashboard/>}></Route>
-          
-  //     </Route>
-  //  </Routes>
   )
 }
 

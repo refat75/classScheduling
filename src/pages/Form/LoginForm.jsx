@@ -1,6 +1,6 @@
 import {useState} from 'react'
 import userLogin from '../../Auth/userLogin'
-import { useNavigate, useLocation } from 'react-router-dom'
+import { Navigate} from 'react-router-dom'
 import './LoginSignup.css'
 
 
@@ -10,10 +10,10 @@ const LoginForm = (props) => {
     const [errorMessage, setErrorMessage] = useState(null);
 
 
-    const navigate = useNavigate();
-    const location = useLocation();
+    // const navigate = useNavigate();
+    // const location = useLocation();
 
-    const from = location.state?.from?.pathname || "/dashboard";
+    // const from = location.state?.from?.pathname || "/dashboard";
 
     const {error, login} = userLogin();
 
@@ -21,7 +21,8 @@ const LoginForm = (props) => {
         e.preventDefault();
         await login(email, password);
         if(!error){
-            navigate(from, {replace: true});
+            // navigate(from, {replace: true});
+            <Navigate to="/dashboard" />
             setEmail("");
             setPassword("");
             return;

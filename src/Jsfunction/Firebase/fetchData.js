@@ -21,6 +21,7 @@ export const getUserData = async (path,id) =>{
         try {
             const docSnap = await getDoc(docRef);
             cacheUserData = docSnap.data();
+            // console.log(cacheUserData.available[0].values);
         } catch (error) {
             console.error('Error checking document existence:', error.message);
         }

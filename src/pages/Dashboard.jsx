@@ -10,24 +10,23 @@ const Dashboard = () => {
   //getting the current user information
   const auth = getAuth(app);
 
-  const [user, setuser] = useState("");
-  onAuthStateChanged(auth,(user) =>{
-    if(user){
-      console.log("user logged in");
-      const emailid = user.email;
+  const [user, setuser] = useState("User");
+  // onAuthStateChanged(auth,(user) =>{
+  //   if(user){
+  //     console.log("user logged in");
+  //     const emailid = user.email;
 
-      setuser(emailid);
-    } else {
-      console.log("No user Signed in");
-    }
+  //     setuser(emailid);
+  //   } else {
+  //     console.log("No user Signed in");
+  //   }
 
-  })
+  // })
 
   
 
   return (
-    <>
-      <Usernav />
+    <>  
       <div>
         <h1>Welcome {user}</h1>
       </div>

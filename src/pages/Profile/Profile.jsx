@@ -1,5 +1,5 @@
 import { useState,useEffect } from 'react'
-import Usernav from '../../Navbar/Usernav'
+
 import getUser from '../../Jsfunction/userauth'
 import updateFirestoreDocument from '../../Jsfunction/Firebase/updateFirestoreDoc'
 import './Profile.css'

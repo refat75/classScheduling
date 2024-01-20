@@ -21,13 +21,24 @@ const signUp = async (email, password) => {
     }
 
     try {
+
+        const dummy = [];
+        for(let i = 0; i < 6; i++){
+            const row = [];
+            for(let j = 0; j < 7; j++){
+            row.push(1);
+            }
+            dummy.push(row);
+        }
+
         const user = auth.currentUser;
         const data = {
             name: "Set Name",
             shortName: "shortName",
             role: "faculty",
             status: "available",
-            email: email
+            email: email,
+            available: dummy
         }
         await setUserInfo(user.uid,"Set Name","Short Name","faculty",data)
     } catch (error) {
