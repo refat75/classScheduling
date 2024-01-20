@@ -1,6 +1,7 @@
 import { useEffect,useState } from 'react'
 import getUser from '../../Jsfunction/userauth';
 import { getUserData } from '../../Jsfunction/Firebase/fetchData';
+import updateFirestoreDocument from '../../Jsfunction/Firebase/updateFirestoreDoc';
 
 const Availability = () => {
   const dummy = [];
@@ -13,7 +14,7 @@ const Availability = () => {
     dummy.push(row);
   }
   const [available,setAvailable] = useState(dummy);
-
+  const [uid,setUid] = useState(null);
   const daysOfWeek = ['Saturday','Sunday','Monday','Tuesday','Wednesday'];
   const timeSlots = ['9:00AM-9:50AM','9:50AM-10:40AM','10:40AM-11:30AM','11:30AM-12:20PM','12:20PM-1:55PM','1:55PM-3:30PM'];
 
@@ -21,9 +22,10 @@ const Availability = () => {
     const fetchData = async () =>{
       try {
         const userUid = await getUser();
+        setUid(userUid);
 
         const data = await getUserData("users",userUid);
-
+       
         const newDummy = [];
 
         for(let i = 0; i < 6; i++){
@@ -38,9 +40,8 @@ const Availability = () => {
           newDummy.push(row);
         }
 
-        console.log(newDummy);
         setAvailable(newDummy);
-        console.log(data.email)
+        
         
       } catch (error) {
         console.log(error.message);
@@ -58,9 +59,14 @@ const Availability = () => {
   }
 
   const onSaveClick = () =>{
-    console.log("saveClick: ", available);
-    const 
 
+    const flattenedAvailable = available.map(row => ({ values: row }));
+
+    const dataToUpdate = {
+      available: flattenedAvailable
+    };
+
+    updateFirestoreDocument("users", uid, dataToUpdate);
   }
   // console.log(available[0][1]);
   
