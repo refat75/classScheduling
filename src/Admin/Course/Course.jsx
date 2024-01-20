@@ -32,15 +32,7 @@ const Course = () => {
     fetchData();
   },[]);
 
-  const addNewItem = (dataToSet) =>{
-    setAllcourse((prevCourses) =>{
-      // const newCourse = prevCourses;
-      // console.log("prev: ",newCourse);
-      // newCourse.push(dataToSet);
-      // console.log("Current Course: ",newCourse);
-      return [...prevCourses,dataToSet]
-    })
-  }
+  
 
 
   const handleSubmit = async (e) =>{
