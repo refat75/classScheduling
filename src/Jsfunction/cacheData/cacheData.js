@@ -11,6 +11,4 @@ export const getAllCourse = async () =>{
     return courseArrray;
 }
 
-export const addCourseInCache() = async (dataToSet) => {
-    courseArrray.push(dataToSet);
-}
+

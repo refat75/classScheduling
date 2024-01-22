@@ -1,6 +1,6 @@
 import {getFirestore,doc,updateDoc} from "firebase/firestore"
 import app from "../../Firebase/config"
-
+import { toast } from "react-toastify";
 const db = getFirestore(app);
 
 const updateFirestoreDocument = async (path,documentId,dataToUpdate) =>{
@@ -8,9 +8,9 @@ const updateFirestoreDocument = async (path,documentId,dataToUpdate) =>{
 
     try{
         await updateDoc(docRef,dataToUpdate);
-        console.log("UpdateFireStoreDoc.js: Data Updated Successfully");
+        toast.success("Data Updated Successfully");
     } catch(error){
-        console.log("UpdateFireStoreDoc.js: Update Unsuccessfull")
+        toast.error("Data Update Unsuccessfull");
     }
 };
 

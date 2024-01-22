@@ -74,6 +74,7 @@ export const ongoingCourse = async () => {
     return courseArray;
 }
 
+
 //Get all the  Room Information
 const roomsArray = [];
 let cacheRoomInformation = null;
@@ -91,3 +92,17 @@ export const availableRoom = async () => {
 
     return roomsArray;
 }
+
+export const refreshCacheData = async () => {
+    cacheUserData = null;
+
+    cacheAllUser = null;
+    allUsersData();
+
+    cacheOngoingCourse = null;
+    ongoingCourse();
+
+    cacheRoomInformation = null;
+    availableRoom();
+
+} 

@@ -1,8 +1,10 @@
 import {v4 as uuidv4} from "uuid"
 import { useEffect, useState } from "react"
-import { addData } from "../../Jsfunction/Firebase/addData"
+import { setData } from "../../Jsfunction/Firebase/addData"
 import { deleteData } from "../../Jsfunction/Firebase/deleteData"
-import { allUsersData,ongoingCourse } from "../../Jsfunction/Firebase/fetchData" 
+import { allUsersData,ongoingCourse,refreshCacheData } from "../../Jsfunction/Firebase/fetchData" 
+import { toast } from "react-toastify"
+
 import './Course.css'
 
 const Course = () => {
@@ -17,8 +19,8 @@ const Course = () => {
   //Current User List
   const [user,setUser] = useState([]);
   //Current Course List
-  const [allcourse, setAllcourse] = useState([]);
-  // console.log("ok", user);
+  const [allcourse, setAllcourse] = useState({});
+  
   useEffect(() =>{
     const fetchData = async() =>{
       try {
@@ -38,7 +40,7 @@ const Course = () => {
   const handleSubmit = async (e) =>{
     e.preventDefault();
     if(!facultyuid || !coursecode || !coursename || !session){
-      alert("Please fillup all the field");
+      toast.error("Please fillup all the fields.")
       return;
     }
     const dataToSet = {
@@ -53,7 +55,24 @@ const Course = () => {
     };
 
     // console.log(dataToSet);
-    addData("courses",dataToSet)
+    try {
+      await setData("courses",dataToSet.dbid,dataToSet);
+      setAllcourse((prevCourses) =>({
+        ...prevCourses,
+        [dataToSet.dbid]: dataToSet,
+      }))
+      refreshCacheData();
+      setFacultyname("");
+      setFacultyuid("");
+      setCourseCode("");
+      setCoursename("");
+      setSession("");
+      setCoursecredit("");
+      setCoursetype("");
+    } catch (error) {
+      alert(error);
+    }
+    
     
   }
 
@@ -74,14 +93,14 @@ const Course = () => {
 
   const handleDelete = async(id) => {
     try {
+      const updatedCourses = {...allcourse};
+      delete updatedCourses[id];
+      setAllcourse(updatedCourses);
       await deleteData("courses",id);
+      refreshCacheData();
     } catch (error) {
       alert("Getting Error while deleting Data",error);
     }
-    // setAllcourse((prevCourses) =>{
-    //   const newCourses = prevCourses.filter(course => String(course.id) != id);
-    //   return newCourses;
-    // });
   };
 
   return (
@@ -115,6 +134,7 @@ const Course = () => {
             <select  
                 id="selecttype"
                 className = "course-input"
+                value={coursetype}
                 onChange={(e) => {setCoursetype(e.target.value)}}
             >
                 <option value="">Select</option>
@@ -149,6 +169,7 @@ const Course = () => {
             <select
             className="course-input"
             id="selectUser"
+            value={facultyname}
             onChange={(e) => {
                 setFacultyuid(e.target.value);
                 setFacultyname(user[e.target.value].name);
