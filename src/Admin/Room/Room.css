@@ -1,0 +1,103 @@
+.class-container{
+    display: flex;
+    flex-direction: column;
+    max-width: 800px;
+    margin: 10px auto;
+    text-align: center;
+}
+
+.room-add{
+    width: 350px;
+    border-radius: 20px;
+    background: #fff;
+    margin: auto;
+    margin-top: 10px;
+    margin-bottom: 20px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.room-add-input{
+    height: 70px;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    background-color: rgb(216, 216, 224);
+}
+
+.room-id-design{
+    margin-top: 10px;
+    margin-left: -200px;
+}
+
+.room-type-design{
+    margin-left: -200px;
+}
+
+.room-id-input{
+    width: 70px;
+    height: 15px;
+}
+
+.room-add-btn{
+    width: 60px;
+    height: 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    margin-left: 140px;
+    margin-top: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #22aa26;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.current-room{
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.room-id{
+    font-size: 25px;
+    font-weight: 700;
+    margin-left: 25px;
+}
+
+.room-type{
+    margin-bottom: 5px;
+    font-size: 15px;
+    font-weight: 550;
+    margin-left: -260px;
+}
+
+.room-dlt-btn{
+    background-color: #df0b20;
+    padding: 4px 8px;
+    font-size: 13px;
+    cursor: pointer;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.room-box{
+    background-color: rgb(213, 213, 233);
+    width: 350px;
+    margin-left: 225px;
+}
+
+.room-box-row1{
+    display: flex;
+    justify-content: space-between;
+}
+
+.room-heading{
+    color: rgb(40, 40, 224);
+}

@@ -3,6 +3,7 @@ import {v4 as uuidv4} from "uuid"
 import { setData } from "../../Jsfunction/Firebase/addData";
 import { availableRoom } from "../../Jsfunction/Firebase/fetchData";
 import { deleteData } from "../../Jsfunction/Firebase/deleteData";
+import './Room.css'
 
 
 const Room = () => {
@@ -63,40 +64,48 @@ const Room = () => {
   }
 
   return (
-    <div>
-      <h1>Add Class Room</h1>
-      <form onSubmit={handleSubmit}>
-        <label htmlFor="roomid">Room ID/Name: </label>
-        <input 
-          type="text"
-          id="roomid"
-          value={roomid}
-          onChange={(e)=> setRoomid(e.target.value)} 
-        />
+    <div className="class-container">
+      <h1 className="room-heading">Add Class Room</h1>
+      <form onSubmit={handleSubmit} className="room-add">
+        <div className="room-add-input">
+         <div className="room-id-design">
+          <label htmlFor="roomid">Room ID: </label>
+            <input 
+              className="room-id-input"
+              placeholder="Room Id"
+              type="text"
+              id="roomid"
+              value={roomid}
+              onChange={(e)=> setRoomid(e.target.value)} 
+            />
+         </div>
 
-        <label htmlFor="selecttype">Room Type</label>
-        <select 
-          id="selecttype"
-          value={roomtype}
-          onChange={(e) => setRoomtype(e.target.value)}
-        >
-          <option value="">Select</option>
-          <option value="Theory">Theory</option>
-          <option value="Lab">Lab</option>
-        </select>
+          <div className="room-type-design">
+            <label htmlFor="selecttype">Room Type: </label>
+            <select 
+              id="selecttype"
+              value={roomtype}
+              onChange={(e) => setRoomtype(e.target.value)}
+            >
+              <option value="">Select</option>
+              <option value="Theory">Theory</option>
+              <option value="Lab">Lab</option>
+            </select>
+          </div>
+        </div>
 
-        <button>Save</button>
+        <button className="room-add-btn">Save</button>
       </form>
 
-      <div>
-        <h1>Current Room</h1>
-        
-        
+      <div className="current-room">
+        <h1 className="room-heading">Current Room</h1>
         {Object.values(currentroom).map((room) =>(
-          <div key={room.dbid}>
-            <h1>{room.roomid}</h1>
-            <p>{room.roomtype}</p>
-            <button onClick={() => handleDelete(room.dbid)}>Delete</button>
+          <div key={room.dbid} className="room-box">
+            <div className="room-box-row1">
+              <p className="room-id">{room.roomid}</p>
+              <button onClick={() => handleDelete(room.dbid)} className="room-dlt-btn">Delete</button>
+            </div>
+            <p className="room-type">{room.roomtype}</p>
           </div>
         ))}
        
