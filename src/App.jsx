@@ -1,7 +1,8 @@
 import './App.css'
 import {BrowserRouter as Router,Route,Routes,Navigate} from "react-router-dom"
 import { getAuth, onAuthStateChanged } from 'firebase/auth';
-
+//Import React Spinner
+import { BounceLoader } from 'react-spinners';
 //Navbar
 import Usernav from './Navbar/Usernav.jsx';
 import AdNav from './Admin/AdNav/AdNav.jsx';
@@ -38,7 +39,7 @@ function App() {
       
       if(authUser){
        
-        // console.log(authUser.uid);
+        
         try {
           const data = await getUserData("users",authUser.uid);
           // console.log(data);
@@ -91,7 +92,11 @@ function App() {
           </>
         )
       ):(
-        isloading? <h1>Loading...</h1> :(
+        isloading? (
+          <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh' }}>
+            <BounceLoader color="#36D7B7" size={60} />
+          </div>
+        ) :(
         <Routes>
           <Route path="*" element = {<Navigate to ="/login"/>} />
           <Route path="/login" element={<Authentication/>}/>
