@@ -110,78 +110,93 @@ const Course = () => {
       <div className="course-container">
             <form onSubmit={handleSubmit} className="course-add">
             <h2 className="course-header">Add New Course</h2>
-            <label htmlFor="courseCode">Course Code </label>
-            <input 
-                className="course-input"
-                placeholder="Course Code"
-                type="text"
-                id = "courseCode"
-                value={coursecode}
-                onChange={(e) => setCourseCode(e.target.value)} 
-            />
-            
-            <label htmlFor="courseName">Course Name </label>
-            <input 
-                className="course-input"
-                placeholder="Course Name"
-                type="text" 
-                id="courseName"
-                value={coursename}
-                onChange={(e) => setCoursename(e.target.value)}
-            />
+            <div className="course-add-row">
+              <div className="add-course-col1">
+                <div>
+                  <label htmlFor="courseCode">Course Code :</label>
+                  <input 
+                      className="course-input"
+                      placeholder="Course Code"
+                      type="text"
+                      id = "courseCode"
+                      value={coursecode}
+                      onChange={(e) => setCourseCode(e.target.value)} 
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="courseName">Course Name :</label>
+                  <input 
+                      className="course-input"
+                      placeholder="Course Name"
+                      type="text" 
+                      id="courseName"
+                      value={coursename}
+                      onChange={(e) => setCoursename(e.target.value)}
+                  />
+                </div>
 
-            <label htmlFor="selecttype">Course Type</label> 
-            <select  
-                id="selecttype"
-                className = "course-input"
-                value={coursetype}
-                onChange={(e) => {setCoursetype(e.target.value)}}
-            >
-                <option value="">Select</option>
-                <option value="Theory">Theory</option>
-                <option value="Lab">Lab</option>
-            </select>
+               <div>
+                <label htmlFor="selecttype">Course Type :</label> 
+                  <select  
+                      id="selecttype"
+                      className = "course-input"
+                      value={coursetype}
+                      onChange={(e) => {setCoursetype(e.target.value)}}
+                  >
+                    <option value="">Select</option>
+                    <option value="Theory">Theory</option>
+                    <option value="Lab">Lab</option>
+                  </select>
+               </div>
+              </div>
 
+              <div className="add-course-col2">
+                <div>
+                  <label htmlFor="coursecredit">Course Credit :</label>
+                  <input 
+                    className="course-input"
+                    type="text" 
+                    placeholder="Course Credit"
+                    id = "coursecredit"
+                    value={coursecredit}
+                    onChange={(e) => setCoursecredit(e.target.value)}
+                  />
+                </div>
+                
+                <div>
+                  <label htmlFor="session">Session :</label>
+                  <input 
+                      className="course-input"
+                      placeholder="Session"
+                      type="text" 
+                      id = "session"
+                      value = {session}
+                      onChange={(e) => setSession(e.target.value)}
+                  />
+                </div>
 
-            <label htmlFor="coursecredit">Course Credit</label>
-            <input 
-              className="course-input"
-              type="text" 
-              placeholder="Course Credit"
-              id = "coursecredit"
-              value={coursecredit}
-              onChange={(e) => setCoursecredit(e.target.value)}
-            />
-
-
-            
-            <label htmlFor="session">Session </label>
-            <input 
-                className="course-input"
-                placeholder="Session"
-                type="text" 
-                id = "session"
-                value = {session}
-                onChange={(e) => setSession(e.target.value)}
-            />
-
-            <label htmlFor="selectUser">Add Teacher: </label>
-            <select
-            className="course-input"
-            id="selectUser"
-            value={facultyname}
-            onChange={(e) => {
-                setFacultyuid(e.target.value);
-                setFacultyname(user[e.target.value].name);
-            }} 
-            >
-                <option value="">Select</option>
-                {Object.keys(user).map((uid) =>(
-                    <option key={uid} value={uid}>
-                    {user[uid].name}
-                    </option>
-                ))}
-            </select>
+                <div>
+                  <label htmlFor="selectUser">Add Teacher : </label>
+                  <select
+                  className="course-input"
+                  id="selectUser"
+                  value={facultyname}
+                  onChange={(e) => {
+                      setFacultyuid(e.target.value);
+                      setFacultyname(user[e.target.value].name);
+                  }} 
+                  >
+                      <option value="">Select</option>
+                      {Object.keys(user).map((uid) =>(
+                          <option key={uid} value={uid}>
+                          {user[uid].name}
+                          </option>
+                      ))}
+                  </select>
+                </div>
+              </div>
+            </div>
             <button className="course-add-btn">Save</button>
             </form>
             {/* Show Current Course */}
@@ -209,7 +224,7 @@ const Course = () => {
                             <td>{allcourse[id].session}</td>
                             <td>{allcourse[id].facultyname}</td>
                             <td>
-                            <button onClick={()=> handleDelete(id)} className="btn-delete">Delete</button>
+                            <button onClick={()=> handleDelete(id)} className="course-btn-delete">Delete</button>
                             </td>
                         </tr>
 

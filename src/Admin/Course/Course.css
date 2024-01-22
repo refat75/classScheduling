@@ -7,7 +7,7 @@
 }
 
 .course-add{
-    width: 500px;
+    width: 900px;
     border-radius: 20px;
     background: #fff;
     margin: auto;
@@ -19,11 +19,12 @@
 }
 
 .course-input{
-    padding: 10px;
-    font-size: 16px;
+    padding: 6px;
+    font-size: 14px;
     margin-right: 10px;
-    border-radius: 10px;
+    border-radius: 5px;
     border: 2px solid #ccc;
+    width: 200px;
 }
 
 .course-input:focus{
@@ -39,6 +40,7 @@
     font-size: 30px;
     font-weight: 600;
     line-height: 34px;
+    margin-left: -160px;
 }
 
 .course-add-btn{
@@ -48,7 +50,7 @@
     justify-content: center;
     align-items: center;
     font-weight: 600;
-    margin-left: 200px;
+    margin-left: 320px;
     margin-top: 10px;
     padding: 10px 20px;
     font-size: 16px;
@@ -85,18 +87,27 @@ tr:nth-child(odd){
     background-color: rgb(244, 245, 248);
 } 
 
-.btn-delete{
+.course-btn-delete{
     background-color: #df0b20;
-    padding: 10px 20px;
+    padding: 8px 15px;
     font-size: 16px;
     cursor: pointer;
     color: white;
     border: none;
     border-radius: 4px;
-    margin-right: -30px;
 }
 
 button:hover{
     background-color: #3e8341;
 }
 
+.add-course-col1,.add-course-col2{
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.course-add-row{
+    display: flex;
+    gap: 100px;
+}
