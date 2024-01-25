@@ -51,26 +51,32 @@ const Profile = () => {
       <div className='profile-container'>
         <div className='profile-information'>
             <h1 className='profile-information-header'>Profile Information</h1>
-            <p>Name: {name}</p>
-            <p>Short Name: {shortName}</p>
+            <div className="profile-information-body">
+              <p>Name: {name}</p>
+              <p>Short Name: {shortName}</p>
+            </div>
         </div>
         <div className='profile-update'>
             <h1 className='profile-update-header'>Update Your Information</h1>
             <form onSubmit={handleUpdate} className='update-information'>
-                <label htmlFor="fullname">Edit Name:</label>
-                <input 
-                    type="text" 
-                    id="fullname"
-                    value={name}
-                    onChange={(e)=> setName(e.target.value)}
-                />
-                <label htmlFor="shortname">Edit Shortname:</label>
-                <input 
-                    type="text" 
-                    id="shortname" 
-                    value= {shortName}
-                    onChange={(e)=>setshortName(e.target.value)}
-                />
+                <div>
+                  <label htmlFor="fullname">Edit Name:</label>
+                  <input 
+                      type="text" 
+                      id="fullname"
+                      value={name}
+                      onChange={(e)=> setName(e.target.value)}
+                  />
+                </div>
+                <div>
+                  <label htmlFor="shortname">Edit Shortname:</label>
+                  <input 
+                      type="text" 
+                      id="shortname" 
+                      value= {shortName}
+                      onChange={(e)=>setshortName(e.target.value)}
+                  />
+                </div>
                 <button className='profile-update-save'>Save</button>
             </form>
         </div>
