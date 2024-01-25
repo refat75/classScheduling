@@ -2,30 +2,34 @@
     display: flex;
     justify-content: space-evenly;
     margin: 10px;
+    background-color: rgb(65, 64, 64);
+    height: 550px;
 }
 
 .profile-information{
     display: flex;
     flex-direction: column;
     width: 500px;
-    height: 500px;
-    padding: 10px;
-    background: rgb(221, 219, 219);
+    height: 400px;
+    padding: 20px;
+    margin-top: 10px;
+    background: rgb(247, 245, 245);
 }
 
 .profile-update{
     display: flex;
     flex-direction: column;
     width: 500px;
-    height: 500px;
-    padding: 10px;
-    background: rgb(221, 219, 219);
+    height: 400px;
+    padding: 20px;
+    margin-top: 10px;
+    background: rgb(247, 245, 245);
 }
 
 .profile-information-header{
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     text-align: center;
-    font-size: 30px;
+    font-size: 35px;
 }
 
 .profile-information-body{
@@ -34,9 +38,9 @@
 }
 
 .profile-update-header{
-    margin-bottom: 15px;
+    margin-bottom: 25px;
     text-align: center;
-    font-size: 30px;
+    font-size: 35px;
 }
 
 .update-information{

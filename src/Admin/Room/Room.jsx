@@ -65,13 +65,13 @@ const Room = () => {
 
   return (
     <div className="class-container">
-      <h1 className="room-heading">Add Class Room</h1>
       <form onSubmit={handleSubmit} className="room-add">
+      <h1 className="room-heading">Add Class Room</h1>
         <div className="room-add-input">
-         <div className="room-id-design">
-          <label htmlFor="roomid">Room ID: </label>
+         <div>
+          <label htmlFor="roomid" className="room-text">Room ID: </label>
             <input 
-              className="room-id-input"
+              className="room-input-box"
               placeholder="Room Id"
               type="text"
               id="roomid"
@@ -80,9 +80,10 @@ const Room = () => {
             />
          </div>
 
-          <div className="room-type-design">
-            <label htmlFor="selecttype">Room Type: </label>
+          <div>
+            <label htmlFor="selecttype" className="room-text">Room Type: </label>
             <select 
+              className="room-input-box"
               id="selecttype"
               value={roomtype}
               onChange={(e) => setRoomtype(e.target.value)}
@@ -92,9 +93,8 @@ const Room = () => {
               <option value="Lab">Lab</option>
             </select>
           </div>
+          <button className="room-add-btn">Save</button>
         </div>
-
-        <button className="room-add-btn">Save</button>
       </form>
 
       <div className="current-room">
