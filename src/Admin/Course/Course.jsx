@@ -58,8 +58,9 @@ const Course = () => {
     try {
       await setData("courses",dataToSet.dbid,dataToSet);
       setAllcourse((prevCourses) =>({
-        ...prevCourses,
         [dataToSet.dbid]: dataToSet,
+        ...prevCourses,
+        
       }))
       refreshCacheData();
       setFacultyname("");
@@ -181,7 +182,7 @@ const Course = () => {
                   <select
                   className="course-input"
                   id="selectUser"
-                  value={facultyname}
+                  value={facultyuid}
                   onChange={(e) => {
                       setFacultyuid(e.target.value);
                       setFacultyname(user[e.target.value].name);
@@ -199,6 +200,7 @@ const Course = () => {
             </div>
             <button className="course-add-btn">Save</button>
             </form>
+  
             {/* Show Current Course */}
             <div className="show-course">
                 <table>

@@ -38,8 +38,7 @@ const Profile = () => {
       shortname: shortName,
     };
     try {
-      updateFirestoreDocument("users",uid,dataToUpdate);
-      alert("data Updated Successfully")  
+      updateFirestoreDocument("users",uid,dataToUpdate); 
     } catch (error) {
       alert("Data Update Failed");
     }

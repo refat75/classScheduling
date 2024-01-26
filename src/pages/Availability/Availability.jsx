@@ -1,6 +1,6 @@
 import { useEffect,useState } from 'react'
 import getUser from '../../Jsfunction/userauth';
-import { getUserData } from '../../Jsfunction/Firebase/fetchData';
+import { getUserData,refreshCacheData } from '../../Jsfunction/Firebase/fetchData';
 import updateFirestoreDocument from '../../Jsfunction/Firebase/updateFirestoreDoc';
 
 const Availability = () => {
@@ -58,7 +58,7 @@ const Availability = () => {
     setAvailable(newGrid);
   }
 
-  const onSaveClick = () =>{
+  const onSaveClick = async() =>{
 
     const flattenedAvailable = available.map(row => ({ values: row }));
 
@@ -67,6 +67,7 @@ const Availability = () => {
     };
 
     updateFirestoreDocument("users", uid, dataToUpdate);
+    refreshCacheData();
   }
   // console.log(available[0][1]);
   

@@ -44,7 +44,6 @@ function App() {
           const data = await getUserData("users",authUser.uid);
           // console.log(data);
           if(data.role === "admin") setIsadmin(true);
-          console.log(isadmin);
           setUser(authUser);
           setIsloading(false)
         } catch (error) {
@@ -54,7 +53,6 @@ function App() {
 
       } else {
         setIsloading(false);
-        console.log("user not logged in");
       }
     });
 
