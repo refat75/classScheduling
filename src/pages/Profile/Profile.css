@@ -3,7 +3,7 @@
     justify-content: space-evenly;
     margin: 10px;
     background-color: rgb(65, 64, 64);
-    height: 550px;
+    min-height: 100vh;
 }
 
 .profile-information{

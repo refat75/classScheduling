@@ -20,6 +20,7 @@ import Availability from './pages/Availability/Availability.jsx';
 import Profile from './pages/Profile/Profile.jsx';
 
 //Admin Pages from ./Admin
+import ClassRoutine from './Admin/Routine/ClassRoutine.jsx';
 import Room from './Admin/Room/Room.jsx';
 import Course from './Admin/Course/Course.jsx';
 import Addashboard from './Admin/Addashboard/Addashboard.jsx';
@@ -75,10 +76,12 @@ function App() {
               <Route path="/course" element={<Course/>}/>
               <Route path="/classroom" element={<Room/>} />
               <Route path="/availability" element={<Availability/>}/>
+              <Route path="/routine" element={<ClassRoutine/>}/>
             </Routes>
           </>
         ):(
           <>
+            {/* User Routing */}
             <Usernav/>
             <Routes>
               <Route path="/login" element = {<Navigate to ="/dashboard"/>} />

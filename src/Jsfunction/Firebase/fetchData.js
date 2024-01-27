@@ -8,6 +8,7 @@ import {
     where
 } from 'firebase/firestore';
 import app from "../../Firebase/config";
+import { toast } from 'react-toastify';
 
 const db = getFirestore(app);
 
@@ -93,6 +94,21 @@ export const availableRoom = async () => {
     return roomsArray;
 }
 
+let cacheRoutinedata = null;
+export const fetchRoutine = async () => {
+    if(!cacheRoutinedata){
+        const docRef = doc(db,"routineData", "0101");
+        try {
+            const docSnap = await getDoc(docRef);
+            cacheRoutinedata = docSnap.data();
+        } catch (error) {
+            toast.error("Can not fetch routin data");
+        }
+    }
+    
+    return cacheRoutinedata;
+}
+
 export const refreshCacheData = async () => {
     cacheUserData = null;
 
@@ -104,5 +120,8 @@ export const refreshCacheData = async () => {
 
     cacheRoomInformation = null;
     availableRoom();
+
+    cacheRoutinedata = null;
+    fetchRoutine();
 
 } 

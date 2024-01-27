@@ -6,6 +6,8 @@
     margin: 10px;
     gap: 10px;
     background-color: rgb(65, 64, 64);
+    min-height: 100vh;
+  
 }
 
 .course-add{

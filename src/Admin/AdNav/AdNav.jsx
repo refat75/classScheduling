@@ -42,7 +42,8 @@ const AdNav = () => {
     <nav className="Ad-navbar">
        <div>
        <NavLink to="/dashboard" className='Ad-nav-menu'>Dashboard</NavLink>
-       <NavLink to="/availability" className='Ad-nav-menu'>Availability</NavLink>
+       <NavLink to="/routine" className='Ad-nav-menu'>Routine</NavLink>
+       {/* <NavLink to="/availability" className='Ad-nav-menu'>Availability</NavLink> */}
        <NavLink to = "/profile" className='Ad-nav-menu'>Profile</NavLink>
        <NavLink to="/course" className='Ad-nav-menu'>Course</NavLink>
        <NavLink to="/classroom" className='Ad-nav-menu'>Class Room</NavLink>

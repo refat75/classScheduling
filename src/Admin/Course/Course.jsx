@@ -26,6 +26,7 @@ const Course = () => {
       try {
         const curUser = await allUsersData();
         setUser(curUser);
+        console.log(curUser);
       } catch (error) {
         console.log("Course.jsx:", error);
       }
@@ -62,7 +63,6 @@ const Course = () => {
         ...prevCourses,
         
       }))
-      refreshCacheData();
       setFacultyname("");
       setFacultyuid("");
       setCourseCode("");

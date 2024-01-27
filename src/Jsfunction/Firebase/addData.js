@@ -6,7 +6,7 @@ import {
     setDoc
 } from "firebase/firestore"
 import app from "../../Firebase/config"
-
+import { refreshCacheData } from "./fetchData";
 import { toast } from "react-toastify";
 
 const db = getFirestore(app)
@@ -27,7 +27,9 @@ export const setData = async (collectionpath, uid, dataToSet) => {
     try {
         await setDoc(docRef,dataToSet);
         toast.success("Data Updated Successfully");
+        refreshCacheData();
     } catch (error) {
-        console.log(error)
+        toast.error("Data Doesn't Updated");
+        console.log(error);
     }
 }
