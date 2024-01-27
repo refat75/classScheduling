@@ -5,7 +5,7 @@ import { TiDelete } from "react-icons/ti";
 import Select from 'react-select'
 import { toast } from "react-toastify";
 
-import { ongoingCourse,allUsersData,fetchRoutine,refreshCacheData } from "../../Jsfunction/Firebase/fetchData";
+import { ongoingCourse,allUsersData,fetchRoutine } from "../../Jsfunction/Firebase/fetchData";
 import { setData } from "../../Jsfunction/Firebase/addData";
 
 const initialTableData = [
@@ -20,8 +20,8 @@ const ClassRoutine = () => {
   const [enableEdit, setEnableEdit] = useState(false);
   const [showSelect, setShowSelect] = useState(false);
   const [courseId, setCourseId] = useState("");
-  const [curRow,setCurRow] = useState(-1);
-  const [curColumn,setCurColumn] = useState(-1);
+  const [curRow,setCurRow] = useState(0);
+  const [curColumn,setCurColumn] = useState(0);
 
 
 
@@ -70,9 +70,11 @@ const ClassRoutine = () => {
     }
     const data = allcourse[courseId];
     const userData = allUser[data.facultyuid];
+   
     const classInfo = {
       subjectCode: data.coursecode,
       teacher: userData.shortname,
+      facultyuid: data.facultyuid,
       roomNo: '412',
     };
    
@@ -128,7 +130,7 @@ const ClassRoutine = () => {
   };
   return (
     <div>
-      <h1>This is Class Routine Page</h1>
+      {/* <h1>This is Class Routine Page</h1> */}
       
       <div>
         <div>

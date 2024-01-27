@@ -5,12 +5,13 @@ import updateFirestoreDocument from '../../Jsfunction/Firebase/updateFirestoreDo
 import './Profile.css'
 
 //Import Data From fetchData.js
-import {getUserData} from "../../Jsfunction/Firebase/fetchData"
+import {getUserData,ongoingCourse} from "../../Jsfunction/Firebase/fetchData"
 const Profile = () => {
 
   const [name,setName] = useState("Loading Name...");
   const [shortName,setshortName] = useState("Loading ShortName...");
   const [uid,setUid] = useState("");
+  const [allCourse, setAllCourse] = useState({});
   useEffect(()=>{
     const fetchData = async () =>{
       try {
@@ -20,6 +21,16 @@ const Profile = () => {
 
         setName(data.name);
         setshortName(data.shortname);
+
+        const course = await ongoingCourse();
+        
+        const relevantData = Object.fromEntries(
+          Object.entries(course).filter(([key,value]) => value.facultyuid == userUid)
+        );
+        
+        
+        setAllCourse(relevantData);
+
       } catch (error) {
         console.log(error.message);
       }
@@ -79,7 +90,33 @@ const Profile = () => {
                 <button className='profile-update-save'>Save</button>
             </form>
         </div>
+        <div>
+          <h2>Current Courses</h2>
+          <table>
+            <thead>
+              <tr>
+                <th>Course Code</th>
+                <th>Course Name</th>
+                <th>Course Type</th>
+                <th>Course Credit</th>
+                <th>Session</th>
+              </tr>
+            </thead>
+            <tbody>
+              {Object.keys(allCourse).map((id) =>(
+                <tr key={id}>
+                  <td>{allCourse[id].coursecode}</td>
+                  <td>{allCourse[id].coursename}</td>
+                  <td>{allCourse[id].coursetype}</td>
+                  <td>{allCourse[id].coursecredit}</td>
+                  <td>{allCourse[id].session}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
       </div>
+     
     </>
   )
 }
