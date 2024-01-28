@@ -66,7 +66,9 @@ const Addashboard = () => {
   }, []);
   return (
     <div className="dashboard-container">
-      <h1>{currentDay}</h1>
+      <div className="dashboard-container-header">
+       <h1>{currentDay}</h1>
+      </div>
       <div className="dashboard-container-row">
         <h1>Today's Class</h1>
         {todaysClass.map((item,index) =>(
