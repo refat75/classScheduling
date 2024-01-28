@@ -5,7 +5,7 @@ import { TiDelete } from "react-icons/ti";
 import Select from 'react-select'
 import { toast } from "react-toastify";
 
-import { ongoingCourse,allUsersData,fetchRoutine } from "../../Jsfunction/Firebase/fetchData";
+import { ongoingCourse,allUsersData,fetchRoutine,availableRoom } from "../../Jsfunction/Firebase/fetchData";
 import { setData } from "../../Jsfunction/Firebase/addData";
 
 const initialTableData = [
@@ -22,8 +22,8 @@ const ClassRoutine = () => {
   const [courseId, setCourseId] = useState("");
   const [curRow,setCurRow] = useState(0);
   const [curColumn,setCurColumn] = useState(0);
-
-
+  const [currentroom,setCurrentRooms] = useState({})
+  const [roomInfo, setRoomInfo] = useState("")
 
   const [allcourse, setAllcourse] = useState({});
   const [allUser, setAllUser] = useState({});
@@ -47,9 +47,10 @@ const ClassRoutine = () => {
           const currentCourse = await ongoingCourse();
           const curUser = await allUsersData();
           const routineData = await fetchRoutine();
+          const roomdata = await availableRoom();
           setAllUser(curUser);
           setAllcourse(currentCourse);
-
+          setCurrentRooms(roomdata)
           unflattenData(routineData);
       } catch (error) {
         console.log("Course.jsx:", error);
@@ -63,9 +64,18 @@ const ClassRoutine = () => {
     label: value.coursecode+": "+value.coursename,
   }));
 
+  const roomData = Object.entries(currentroom).map(([key,value]) =>({
+    value: value.roomid,
+    label: value.roomid+": "+value.roomtype,   
+  }))
+
   const updateCell = () =>{
     if(!courseId) {
       toast.error("Please Select a Course");
+      return;
+    }
+    if(!roomInfo){
+      toast.error("Please Select Room");
       return;
     }
     const data = allcourse[courseId];
@@ -75,7 +85,7 @@ const ClassRoutine = () => {
       subjectCode: data.coursecode,
       teacher: userData.shortname,
       facultyuid: data.facultyuid,
-      roomNo: '412',
+      roomNo: roomInfo,
     };
    
     setTableData((prevTableData) =>{
@@ -142,6 +152,12 @@ const ClassRoutine = () => {
                 isSearchable
                 placeholder="Type Course Code,Course Name...."
                 onChange={(selectedData) => setCourseId(selectedData.value)}
+              />
+              <Select
+                options={roomData}
+                isSearchable
+                placeholder = "Type Room ID.."
+                onChange={(selectedData) => setRoomInfo(selectedData.value)}
               />
               <button onClick={updateCell}>Update</button>
             </div>
