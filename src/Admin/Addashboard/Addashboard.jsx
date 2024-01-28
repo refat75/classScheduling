@@ -2,6 +2,7 @@ import { useState,useEffect } from "react"
 import getUser from "../../Jsfunction/userauth";
 
 import { fetchRoutine } from "../../Jsfunction/Firebase/fetchData";
+import './Addashboard.css'
 
 const daysOfWeek = ['Saturday','Sunday','Monday','Tuesday','Wednesday'];
 const timeSlots = ['9:00AM-9:50AM','9:50AM-10:40AM','10:40AM-11:30AM','11:30AM-12:20PM','12:20PM-1:55PM','1:55PM-3:30PM'];
@@ -64,15 +65,17 @@ const Addashboard = () => {
     fetchData();
   }, []);
   return (
-    <div>
+    <div className="dashboard-container">
       <h1>{currentDay}</h1>
-      <div>
+      <div className="dashboard-container-row">
         <h1>Today's Class</h1>
         {todaysClass.map((item,index) =>(
           item !== null && <div key = {index}>
-            <h2>{item.subjectCode}</h2>
-            <p>{item.timeSlot}</p>
-            <p>{item.roomNo}</p>
+            <div className="dashboard-container-row1">
+              <h2>{item.subjectCode}</h2>
+              <p>{item.timeSlot}</p>
+              <p>{item.roomNo}</p>
+            </div>
           </div>
           
         ))}

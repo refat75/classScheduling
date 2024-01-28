@@ -4,6 +4,7 @@ import { FaEdit } from "react-icons/fa";
 import { TiDelete } from "react-icons/ti";
 import Select from 'react-select'
 import { toast } from "react-toastify";
+import './ClassRoutine.css'
 
 import { ongoingCourse,allUsersData,fetchRoutine,availableRoom } from "../../Jsfunction/Firebase/fetchData";
 import { setData } from "../../Jsfunction/Firebase/addData";
@@ -124,28 +125,13 @@ const ClassRoutine = () => {
     await setData("routineData","0101",flatenData);
     
   }
-  const tableHeadStyle = {
-    border: '1px solid black',
-    padding: '5px',
-    width: '40px',
-    height: '40px'
-    // textAlign: 'center',
-  };
-  const tableCellStyle = {
-    border: '1px solid black',
-    padding: '1px',
-    width: '200px',
-    height: '100px'
-    // textAlign: 'center',
-  };
+
   return (
-    <div>
-      {/* <h1>This is Class Routine Page</h1> */}
-      
-      <div>
+    <div className="routine-container">
+      <div className="routine-container-row1">
         <div>
           {showSelect? (
-            <div>
+            <div className="routine-container-row11">
               <p>Update Subject for {daysOfWeek[curRow]}, {timeSlots[curColumn]}</p>
               <Select
                 options={options}
@@ -163,53 +149,52 @@ const ClassRoutine = () => {
             </div>
           ): null}
         </div>
-        
-        <button onClick={() => {
+      </div>
+      <button onClick={() => {
           setShowSelect(false);
           setEnableEdit(!enableEdit);
         }}
         > <FaEdit /></button>
-      </div>
-      <table>
+      <table className="routine-table">
         <thead>
             <tr>
-                <th style={tableHeadStyle}>Day</th>
+                <th >Day</th>
                 {timeSlots.map((time,timeIndex) =>(
-                    <th key = {timeIndex} style={tableHeadStyle}>{time}</th>
+                    <th key = {timeIndex}>{time}</th>
                 ))}
             </tr>
         </thead>
         <tbody >
             {daysOfWeek.map((day,rowIndex) =>(
-                <tr key = {rowIndex} style={tableCellStyle}>
-                    <td style={tableCellStyle}>{day}</td>
+                <tr key = {rowIndex}>
+                    <td>{day}</td>
                     {tableData[rowIndex].map((cell,colIndex) =>(
-                        <td key = {colIndex} style={tableCellStyle}>
+                        <td key = {colIndex}>
                             {cell.map((classInfo,index) =>(
-                                <div key={index}>
-                                    {`${classInfo.subjectCode}: ${classInfo.teacher}(${classInfo.roomNo})`}
+                                <div className="class-box-container">
+                                  <div className="class-box" key={index}>
+                                    <div>
+                                      {`${classInfo.subjectCode}: ${classInfo.teacher}(${classInfo.roomNo})`}
+                                    </div>
+                                    <div>
                                     {enableEdit? (
                                       <button 
                                       onClick={() => deleteClassInfo(rowIndex,colIndex,index)}
-                                      style={{
-                                        border: 'none',
-                                        outline: 'none',
-                                        cursor: 'pointer',
-                                        backgroundColor: 'transparent', 
-                                      }}
                                       >
-                                        <TiDelete style={{color: 'red',fontSize: '24px'}}/>
+                                        <TiDelete className='class-box-icon'/>
                                       </button>
                                       
                                     ): null}
+                                    </div>
+                                  </div>
                                 </div>
                             ))}
                            {enableEdit ? (
-                             <button onClick={() => {
-                              setShowSelect(true)
-                              setCurRow(rowIndex);
-                              setCurColumn(colIndex);
-                            }}><RiAddLine /></button>
+                                <button className='class-btn' onClick={() => {
+                                setShowSelect(true)
+                                setCurRow(rowIndex);
+                                setCurColumn(colIndex);
+                              }}><RiAddLine /></button>
                            ): null }
                         </td>
                     ))}
@@ -218,7 +203,7 @@ const ClassRoutine = () => {
         </tbody>
       </table>
       <div>
-        <button onClick={handleSave}>Save</button>
+        <button className="class-save-btn" onClick={handleSave}>Save</button>
       </div>
     </div>
   )

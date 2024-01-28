@@ -202,7 +202,7 @@ const Course = () => {
   
             {/* Show Current Course */}
             <div className="show-course">
-                <table>
+                <table className="course-table">
                     <thead>
                         <tr>
                         <th>Course Code</th>

@@ -76,29 +76,28 @@
     border-radius: 4px;
 }
 
-table{
+.course-table{
     border-collapse: collapse;
-    width: 1100px;
+    width: 100%;
     margin-bottom: 20px;
 }
 
-th,
-td {
+.course-table th,td {
     padding: 10px;
     text-align: left;
     border-bottom: 1px solid #ddd;
 }
 
-th {
+.course-table th {
     background-color: #5c7899;
     color: white;
 }
 
-tr:nth-child(even){
+.course-table tr:nth-child(even){
     background-color: rgb(220, 220, 226);
 } 
 
-tr:nth-child(odd){
+.course-table tr:nth-child(odd){
     background-color: rgb(244, 245, 248);
 } 
 
@@ -112,6 +111,3 @@ tr:nth-child(odd){
     border-radius: 4px;
 }
 
-button:hover{
-    background-color: #3e8341;
-}

@@ -1,0 +1,36 @@
+.dashboard-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 10px;
+    gap: 20px;
+    background-color: rgb(65, 64, 64);
+    min-height: 100vh;
+}
+
+.dashboard-container-row{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    padding: 10px;
+    width: 50%;
+    background-color: white;
+}
+
+.dashboard-container-row h1{
+    color: blue;
+    font-size: 35px;
+    font-weight: 700;
+}
+
+.dashboard-container-row1{
+    background-color: rgb(209, 201, 201);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 400px;
+    height: 100px;
+    gap: 8px;
+}

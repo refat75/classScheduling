@@ -1,0 +1,143 @@
+.routine-container{
+   background-color: green;
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+   gap: 10px;
+   margin: 10px;
+   background-color: rgb(65, 64, 64);
+   min-height: 100vh;
+}
+
+.routine-table{
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+.routine-table th,td {
+    padding: 10px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+}
+
+.routine-table td{
+    padding: 20px 10px;
+    border: 1px solid black;
+}
+
+.routine-table th {
+    background-color: #5c7899;
+    color: white;
+}
+
+.routine-table tr:nth-child(even){
+    background-color: white;
+} 
+
+.routine-table tr:nth-child(odd){
+    background-color: white;
+} 
+
+.class-box-container{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(236, 234, 234);
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+.class-box{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-left: 5px;
+    margin: 10px 0px;
+    color: black;
+}
+
+.class-box button{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 30px;
+    height: 20px;
+    padding: none;
+    margin: none;
+    border: none;
+    outline: none;
+}
+
+.class-box-icon{
+    color: red;
+    font-size: 20px;
+}
+
+.class-btn{
+    background-color: rgb(113, 170, 113);
+    width:100%;
+    height: 20px;
+}
+
+.class-save-btn{
+    width: 80px;
+    height: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    margin: 10px;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+.routine-container-row1{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    background-color: white;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 10px;
+}
+
+.routine-container-row11{
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+    justify-content: center;
+
+    gap: 10px;
+}
+
+.routine-container-row11 p{
+    color: blue;
+    font-size: 25px;
+    font-weight: 600;
+}
+
+.routine-container-row11 button{
+    width: 80px;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 600;
+    padding: 10px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    background-color: #4CAF50;
+    color: white;
+    border: none;
+    border-radius: 4px;
+}
+
+

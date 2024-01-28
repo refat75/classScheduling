@@ -59,40 +59,42 @@ const Profile = () => {
   return (
     <>
       <div className='profile-container'>
-        <div className='profile-information'>
-            <h1 className='profile-information-header'>Profile Information</h1>
-            <div className="profile-information-body">
-              <p>Name: {name}</p>
-              <p>Short Name: {shortName}</p>
-            </div>
+        <div className='profile-container-row1'>
+          <div className='profile-information'>
+              <h1 className='profile-information-header'>Profile Information</h1>
+              <div className="profile-information-body">
+                <p>Name: {name}</p>
+                <p>Short Name: {shortName}</p>
+              </div>
+          </div>
+          <div className='profile-update'>
+              <h1 className='profile-update-header'>Update Your Information</h1>
+              <form onSubmit={handleUpdate} className='update-information'>
+                  <div>
+                    <label htmlFor="fullname">Edit Name:</label>
+                    <input 
+                        type="text" 
+                        id="fullname"
+                        value={name}
+                        onChange={(e)=> setName(e.target.value)}
+                    />
+                  </div>
+                  <div>
+                    <label htmlFor="shortname">Edit Shortname:</label>
+                    <input 
+                        type="text" 
+                        id="shortname" 
+                        value= {shortName}
+                        onChange={(e)=>setshortName(e.target.value)}
+                    />
+                  </div>
+                  <button className='profile-update-save'>Save</button>
+              </form>
+          </div>
         </div>
-        <div className='profile-update'>
-            <h1 className='profile-update-header'>Update Your Information</h1>
-            <form onSubmit={handleUpdate} className='update-information'>
-                <div>
-                  <label htmlFor="fullname">Edit Name:</label>
-                  <input 
-                      type="text" 
-                      id="fullname"
-                      value={name}
-                      onChange={(e)=> setName(e.target.value)}
-                  />
-                </div>
-                <div>
-                  <label htmlFor="shortname">Edit Shortname:</label>
-                  <input 
-                      type="text" 
-                      id="shortname" 
-                      value= {shortName}
-                      onChange={(e)=>setshortName(e.target.value)}
-                  />
-                </div>
-                <button className='profile-update-save'>Save</button>
-            </form>
-        </div>
-        <div>
+        <div className='profile-container-row2'>
           <h2>Current Courses</h2>
-          <table>
+          <table className='profile-table'>
             <thead>
               <tr>
                 <th>Course Code</th>
