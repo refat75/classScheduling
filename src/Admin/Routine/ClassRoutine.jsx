@@ -171,7 +171,7 @@ const ClassRoutine = () => {
                     {tableData[rowIndex].map((cell,colIndex) =>(
                         <td key = {colIndex}>
                             {cell.map((classInfo,index) =>(
-                                <div className="class-box-container">
+                                <div className="class-box-container" >
                                   <div className="class-box" key={index}>
                                     <div>
                                       {`${classInfo.subjectCode}: ${classInfo.teacher}(${classInfo.roomNo})`}
