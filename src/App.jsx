@@ -43,13 +43,11 @@ function App() {
         
         try {
           const data = await getUserData("users",authUser.uid);
-          // console.log(data);
           if(data.role === "admin") setIsadmin(true);
           setUser(authUser);
           setIsloading(false)
         } catch (error) {
           setIsloading(false)
-          console.log("App.js: error when getting User Data")
         }
 
       } else {
