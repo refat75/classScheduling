@@ -18,13 +18,14 @@ import Dashboard from "./pages/Dashboard.jsx"
 import PrivateRoute from './Layout/PrivateRoute.jsx';
 import Availability from './pages/Availability/Availability.jsx';
 import Profile from './pages/Profile/Profile.jsx';
+import UserRoutine from './pages/UserRoutine/UserRoutine.jsx';
 
 //Admin Pages from ./Admin
 import ClassRoutine from './Admin/Routine/ClassRoutine.jsx';
 import Room from './Admin/Room/Room.jsx';
 import Course from './Admin/Course/Course.jsx';
 import Addashboard from './Admin/Addashboard/Addashboard.jsx';
-import { Component, useEffect,useState } from 'react';
+import { useEffect,useState } from 'react';
 
 import { getUserData } from './Jsfunction/Firebase/fetchData.js';
 
@@ -87,6 +88,7 @@ function App() {
               <Route path="/dashboard" element={<Addashboard/>}/>
               <Route path="/profile" element={<Profile/>}/>
               <Route path="/availability" element={<Availability/>}/>
+              <Route path="/routine" element={<UserRoutine/>}/>
             </Routes>
           </>
         )

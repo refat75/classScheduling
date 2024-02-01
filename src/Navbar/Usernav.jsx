@@ -46,6 +46,7 @@ const Usernav = () => {
         <div className="nav-menu">
             <NavLink to="/dashboard"  className='navlink'>Dashboard</NavLink>
             {/* <NavLink to="/availability" className='navlink'>Availability</NavLink> */}
+            <NavLink to="/routine" className='navlink'>Routine</NavLink> 
             <NavLink to="/profile" className='navlink'>Profile</NavLink> 
         </div>
         <p className="shortname">{name} ({shortName})</p>
