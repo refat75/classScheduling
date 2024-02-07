@@ -1,5 +1,6 @@
 import { useState, useEffect } from "react"
 import { toast } from "react-toastify";
+import './UserRoutine.css'
 
 import { fetchRoutine } from "../../Jsfunction/Firebase/fetchData";
 const initialTableData = [
@@ -40,9 +41,9 @@ const UserRoutine = () => {
     fecthData();
   },[])  
   return (
-    <div>
+    <div className="user-routine-container">
       <div>
-        <table>
+        <table className="user-routine-table">
           <thead>
             <tr>
               <th >Day</th>
@@ -58,8 +59,8 @@ const UserRoutine = () => {
                     {tableData[rowIndex].map((cell,colIndex) =>(
                         <td key = {colIndex}>
                             {cell.map((classInfo,index) =>(
-                                <div key={index}>
-                                  <div key={index}>
+                                <div className="user-class-box-container" key={index}>
+                                  <div className="user-class-box" key={index}>
                                     <div>
                                       {`${classInfo.subjectCode}: ${classInfo.teacher}(${classInfo.roomNo})`}
                                     </div>
