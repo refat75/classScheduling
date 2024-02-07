@@ -76,7 +76,7 @@ const Addashboard = () => {
             <div className="dashboard-container-row1">
               <h2>{item.subjectCode}</h2>
               <p>{item.timeSlot}</p>
-              <p>{item.roomNo}</p>
+              <p>Room: {item.roomNo}</p>
             </div>
           </div>
           
