@@ -84,7 +84,7 @@ function App() {
             <Usernav/>
             <Routes>
               <Route path="/login" element = {<Navigate to ="/dashboard"/>} />
-              <Route path="/" element={<Dashboard/>} />
+              <Route path="/" element={<Navigate to ="/dashboard"/>} />
               <Route path="/dashboard" element={<Addashboard/>}/>
               <Route path="/profile" element={<Profile/>}/>
               <Route path="/availability" element={<Availability/>}/>
