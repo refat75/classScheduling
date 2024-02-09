@@ -8,6 +8,7 @@ import './ClassRoutine.css'
 
 import { ongoingCourse,allUsersData,fetchRoutine,availableRoom } from "../../Jsfunction/Firebase/fetchData";
 import { setData } from "../../Jsfunction/Firebase/addData";
+import { generate } from "../../Algorithm/generateRoutine";
 
 const initialTableData = [
     Array(6).fill([]), //Row 1
@@ -16,6 +17,7 @@ const initialTableData = [
     Array(6).fill([]),
     Array(6).fill([]),
 ];
+
 const ClassRoutine = () => {
   const [tableData, setTableData] = useState(initialTableData);
   const [enableEdit, setEnableEdit] = useState(false);
@@ -39,6 +41,7 @@ const ClassRoutine = () => {
 
       initialTableData[dayIndex][timeSlotIndex] = flatenData[key];
     });
+
     setTableData(initialTableData);
   }
 
@@ -126,6 +129,13 @@ const ClassRoutine = () => {
     
   }
 
+  const handleGenerate = async () =>{
+    
+    const getRoutine = await generate();
+    setTableData(getRoutine);
+   
+  }
+
   return (
     <div className="routine-container">
       <div className="routine-container-row1">
@@ -202,7 +212,9 @@ const ClassRoutine = () => {
             ))}
         </tbody>
       </table>
-      <div>
+      <div style={{ display: 'flex' }}>
+      
+        <button className="class-save-btn" onClick={handleGenerate}>Generate</button>
         <button className="class-save-btn" onClick={handleSave}>Save</button>
       </div>
     </div>

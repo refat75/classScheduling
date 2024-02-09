@@ -154,14 +154,20 @@ const Course = () => {
               <div className="add-course-col2">
                 <div>
                   <label htmlFor="coursecredit">Course Credit :</label>
-                  <input 
+                  <select 
                     className="course-input"
-                    type="text" 
-                    placeholder="Course Credit"
                     id = "coursecredit"
                     value={coursecredit}
                     onChange={(e) => setCoursecredit(e.target.value)}
-                  />
+                  >
+                    <option value="">Credit</option>
+                    <option value="1.0">1.0</option>
+                    <option value="1.5">1.5</option>
+                    <option value="2.0">2.0</option>
+                    <option value="3.0">3.0</option>
+
+                  </select>
+
                 </div>
                 
                 <div>
